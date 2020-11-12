@@ -1,43 +1,26 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
-import sys
-from getpass import getpass
 
-def printUse():
-    print("Usage: python automateLogin.py -[fb/gmail]")
-    print("Eg: python automateLogin.py -fb")
-    print("Eg: python automateLogin.py -gmail")
+usrname = '63050131'
+psd = "hW2urmitfq"
 
-if len(sys.argv)==2:
-    email = input("Enter Email: ")
-    psd = getpass("Enter Password: ")
+driver = webdriver.Chrome('C:/Users/Dylan/chromedriver_win32/chromedriver.exe')
+driver.get("https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses")
 
-    if sys.argv[1]=='-gmail':
-        try:
-            print("Now logging you in your gmail account..\n")
-            driver = webdriver.Chrome()
-            driver.get("https://mail.google.com")
-            driver.find_element_by_id('identifierId').send_keys(email)
-            driver.find_element_by_id('identifierNext').click()
-            sleep(2)
-            driver.find_element_by_name('password').send_keys(psd)
-            driver.find_element_by_id('passwordNext').click()
-            driver.maximize_window()
-        except:
-            print("An Error Occurred..")
-    elif sys.argv[1]=='-fb':
-        try:
-            print("Logging you to your facebook id..\n")
-            driver = webdriver.Chrome()
-            driver.get("https://facebook.com")
-            driver.find_element_by_id('email').send_keys(email)
-            driver.find_element_by_id('pass').send_keys(psd)
-            driver.find_element_by_id('loginbutton').click()
-            driver.maximize_window()
-        except:
-            print("An Error Occurred..")
-    else:
-        print("Unsupported website")
-else:
-    printUse()
+sleep(2.9)    #loading time
+loop_times = 1
+while True:
+    if loop_times==4 : break
+    try:
+        print("Now logging... ")
+
+        driver.find_element_by_name('name').send_keys(usrname)
+        sleep(0.03)
+        driver.find_element_by_name('password').send_keys(psd)
+        driver.find_element_by_name('password').send_keys(Keys.RETURN)
+        driver.maximize_window()
+        break
+    except:
+        print("some thing wrong trying again...")
+        sleep(0.2)

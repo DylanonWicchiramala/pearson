@@ -8,10 +8,13 @@ driver = webdriver.Chrome('C:/Users/Dylan/chromedriver_win32/chromedriver.exe')
 
 driver.get('https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses')
 
-time.sleep(8)  # delays program for load website and login.
+time.sleep(10)   # login time.
 while True:
-    time.sleep(1)
     try:
+        #time.sleep()
+        driver.find_element_by_class_name('accordion-link ng-binding ng-scope ng-isolate-scope').click()
+        print("pressed button.")
         break
     except:
-        pass
+        time.sleep(2)
+        print("skipped.")
