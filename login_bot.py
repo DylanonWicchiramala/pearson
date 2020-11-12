@@ -2,8 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 
+
+
 usrname = '63050131'
-psd = "hW2urmitfq"
+psd = open('pwd.txt','r').read()
 
 driver = webdriver.Chrome('C:/Users/Dylan/chromedriver_win32/chromedriver.exe')
 driver.get("https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses")
@@ -18,7 +20,7 @@ while True:
         driver.find_element_by_name('name').send_keys(usrname)
         sleep(0.03)
         driver.find_element_by_name('password').send_keys(psd)
-        driver.find_element_by_name('password').send_keys(Keys.RETURN)
+        #driver.find_element_by_name('password').send_keys(Keys.RETURN)
         driver.maximize_window()
         break
     except:
