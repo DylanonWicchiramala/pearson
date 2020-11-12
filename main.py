@@ -3,10 +3,13 @@ from selenium import webdriver
 import bs4
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
+from login_bot import login
+from get_driver import driver
+import sys
 
-driver = webdriver.Chrome('C:/Users/Dylan/chromedriver_win32/chromedriver.exe')
+login()
 
-driver.get('https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses')
+sys.exit()
 
 time.sleep(8)  # delays program for load website and login.
 while True:
