@@ -8,7 +8,7 @@ import sys
 # driver = webdriver.Chrome('C:/Users/Dylan/chromedriver_win32/chromedriver.exe')
 # driver.get("https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses")
 
-def login(username='63050131'):
+def login(username='63050131',retireTimes=10):
     # get usermname and password
     username = username  # type pearson user name here
     try:
@@ -20,7 +20,7 @@ def login(username='63050131'):
     sleep(2.9)  # delays for loading time.
     loop_times = 1
     print("Now logging...")
-    while True:
+    for i in range(retireTimes):
         loop_times += 1
         try:
             driver.find_element_by_name('name').send_keys(username)
@@ -31,7 +31,4 @@ def login(username='63050131'):
         except:
             #print("trying again.")
             sleep(0.7)
-
-        if loop_times == 10:
-            print('something went wrong.')
-            break
+    print('something went wrong.')
