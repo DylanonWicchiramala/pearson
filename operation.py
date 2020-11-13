@@ -8,7 +8,7 @@ import sys
 # driver = webdriver.Chrome('C:/Users/Dylan/chromedriver_win32/chromedriver.exe')
 # driver.get("https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses")
 
-def login(username='63050131', retireTimes=10, fullScreen= True):
+def login(username='63050131', retireTimes=10):
     # get usermname and password
     username = username  # type pearson user name here
     try:
@@ -26,7 +26,6 @@ def login(username='63050131', retireTimes=10, fullScreen= True):
             driver.find_element_by_name('name').send_keys(username)
             driver.find_element_by_name('password').send_keys(pwd)
             driver.find_element_by_name('password').send_keys(Keys.RETURN)
-            if fullScreen: driver.maximize_window()
             break
         except:
             print("login: logging again.")
