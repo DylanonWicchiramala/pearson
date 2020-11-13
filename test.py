@@ -1,4 +1,4 @@
-import time
+from time import sleep
 from selenium import webdriver
 import bs4
 from webdriver_manager.chrome import ChromeDriverManager
@@ -6,15 +6,14 @@ import pandas as pd
 
 driver = webdriver.Chrome('C:/Users/Dylan/chromedriver_win32/chromedriver.exe')
 
-driver.get('https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses')
-
-time.sleep(10)   # login time.
-while True:
+driver.get('https://www.youtube.com/?gl=TH&hl=th')
+for i in range(100):
     try:
-        #time.sleep()
-        driver.find_element_by_class_name('accordion-link ng-binding ng-scope ng-isolate-scope').click()
-        print("pressed button.")
+        name_1 = driver.find_elements_by_id('video-title')  #ssssssssssssssss
         break
     except:
-        time.sleep(2)
-        print("skipped.")
+        sleep(0.1)
+        print(i)
+
+for i in range
+    print(name_1[i].text)

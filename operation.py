@@ -31,7 +31,8 @@ def login(username='63050131', retireTimes=10):
             print("login: logging again.")
             sleep(0.7)
     if i == retireTimes - 1: ('login: something went wrong.')
-    sleep(6)  # assignment loadding time
+    sleep(7)  # assignment loadding time
+    print('loggin: process done.')
 
 
 def openAssignment(retireTimes=50, at=1):
@@ -46,3 +47,4 @@ def openAssignment(retireTimes=50, at=1):
             print('openAssignment: clicking again.')
             sleep(0.7)
     if i == retireTimes - 1: print('openAssignment: something went wrong.')
+    print('openAssignment: process done.')
