@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 from get_driver import driver
+import keyboard
 import sys
 
 
@@ -31,20 +32,22 @@ def login(username='63050131', retireTimes=10):
             print("login: logging again.")
             sleep(0.7)
     if i == retireTimes - 1: ('login: something went wrong.')
-    sleep(7)  # assignment loadding time
+    sleep(7.1)  # assignment loadding time
     print('loggin: process done.')
 
 
 def openAssignment(retireTimes=50, at=1):
     at = at - 1
-    sleep(3)  # delay for load assignment.
+    #sleep(7)  # delay for load assignment.
     print('openAssignment: clicking Ex.')
+    #driver.get('https://myenglishlab.pearson-intl.com/assignments/#!/allCourses/allStatuses')
     for i in range(retireTimes):
         try:
-            driver.find_element_by_id('timeline-item-link').get_attribute('herf') #get herf
+            open = driver.find_element_by_id('accordion-link ng-binding ng-scope ng-isolate-scope')
+            open.get_attribute('href')
             break
         except:
             print('openAssignment: clicking again.')
-            sleep(0.7)
+            sleep(1)
     if i == retireTimes - 1: print('openAssignment: something went wrong.')
     print('openAssignment: process done.')

@@ -10,4 +10,5 @@ from time import sleep
 
 operation.login()
 #driver.maximize_window()
+input("press any key to continue.")
 operation.openAssignment()
