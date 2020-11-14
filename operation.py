@@ -31,19 +31,19 @@ def login(username='63050131', retireTimes=10):
         if i == retireTimes - 1: print('logging: something went wrong.')
 
 
-def openAssignment(retireTimes=10, at=1):
+def open_assignment(retireTimes=10, at=1):
     at = at - 1
     sleep(1)
     driver.implicitly_wait(10)  # delay for load assignment.
     print('openAssignment: opening assignment...')
     for i in range(retireTimes):
         try:
-            driver.find_element_by_link_text('Open').click()
+            driver.find_element_by_link_text('Resume').click()
             print('openAssignment: process done.')
             break
 
         except SeleniumExceptions.NoSuchElementException:
-            driver.find_element_by_link_text('Resume').click()
+            driver.find_element_by_link_text('Open').click()
             print('openAssignment: process done.')
             break
 
@@ -52,3 +52,14 @@ def openAssignment(retireTimes=10, at=1):
             sleep(1)
 
         if i == retireTimes - 1: print('openAssignment: something went wrong.')
+
+def do_assignment():
+    assignment_type = assignment_type()
+    pass
+
+def assignment_type():
+    return assignment_type
+    pass
+
+def correct_chk():
+    pass

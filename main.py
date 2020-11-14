@@ -10,4 +10,4 @@ from time import sleep
 
 operation.login()
 #driver.maximize_window()
-operation.openAssignment()
+operation.open_assignment()
