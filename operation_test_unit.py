@@ -38,7 +38,7 @@ def login(username='63050131', retireTimes=5):
 def expaned_tree(at=0):
     driver.implicitly_wait(10)
     sleep(1)
-    tree = driver.find_elements_by_name('expand_more')
+    tree = driver.find_elements_by_xpath("//*[@id='content']/div/div/div[3]/div/div[2]/div/treeview[1]/div[@class='tree-node ng-scope dir']")
     cur_tree = tree[at]
     cur_tree.click()
 
