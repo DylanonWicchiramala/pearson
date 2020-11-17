@@ -27,6 +27,7 @@ def login(username='63050131', retireTimes=5):
             driver.find_element_by_name('password').send_keys(pwd)
             driver.find_element_by_name('password').send_keys(Keys.RETURN)
             print('logging: process done.')
+            driver.implicitly_wait(3)
             break
         except:
             print("logging: logging again.")
@@ -36,9 +37,10 @@ def login(username='63050131', retireTimes=5):
 
 def expaned_tree(at=0):
     driver.implicitly_wait(10)
-    sleep(0.5)
+    sleep(1)
     tree = driver.find_elements_by_name('expand_more')
-    tree[at].click()
+    cur_tree = tree[at]
+    cur_tree.click()
 
 
 def open_assignment(retireTimes=10, at=0):
