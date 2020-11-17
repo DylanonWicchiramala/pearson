@@ -35,7 +35,7 @@ def login(username='63050131', retireTimes=5):
 
 
 def expaned_tree(at=0):
-    driver.implicitly_wait(3)
+    driver.implicitly_wait(10)
     sleep(0.5)
     tree = driver.find_elements_by_name('expand_more')
     tree[at].click()
