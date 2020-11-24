@@ -8,5 +8,5 @@ import operation_test_unit as test
 
 test.login()
 test.expaned_tree()
-test.open_assignment(at= 1)
+test.open_assignment(at= 0)
 test.show_ans()

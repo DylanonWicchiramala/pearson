@@ -38,7 +38,8 @@ def login(username='63050131', retireTimes=5):
 def expaned_tree(at=0):
     driver.implicitly_wait(10)
     sleep(1)
-    tree = driver.find_elements_by_xpath("//*[@id='content']/div/div/div[3]/div/div[2]/div/treeview[1]/div[@class='tree-node ng-scope dir']")
+    tree = driver.find_elements_by_xpath(
+        "//*[@id='content']/div/div/div[3]/div/div[2]/div/treeview[1]/div[@class='tree-node ng-scope dir']")
     cur_tree = tree[at]
     cur_tree.click()
 
@@ -49,11 +50,13 @@ def open_assignment(retireTimes=10, at=0):
     print('openAssignment: opening assignment...')
     for i in range(retireTimes):
         try:
-            open = driver.find_elements_by_link_text('Open')
-            open[at].click()
+            _open = driver.find_elements_by_link_text('Open')
+            _open[at].click()
             print('openAssignment: process done.')
             break
-
+        except IndexError:
+            print('openAssignment: index err.')
+            break
         except:
             print('openAssignment: clicking again.')
             sleep(1)
@@ -61,28 +64,31 @@ def open_assignment(retireTimes=10, at=0):
         if i == retireTimes - 1: print('openAssignment: something went wrong.')
 
 
+# ------------------------------
+
 def show_ans():
-    link = driver.current_url
-    ans_link = link + 'show_answers'
-
-    # Open a new window
-    driver.execute_script("window.open('');")
-    # Switch to the new window and open URL B
-    driver.switch_to.window(driver.window_handles[1])
-    driver.get(ans_link)
-
-    # driver.implicitly_wait(10)
-    # try:
-    #     show = driver.find_element_by_id('showAnswer')
+    # link = driver.current_url
+    # ans_link = link + 'show_answers'
     #
-    #     #show ans in new tab
-    #     webdriver.ActionChains(driver) \
-    #         .key_down(Keys.CONTROL) \
-    #         .click(show) \
-    #         .key_up(Keys.CONTROL) \
-    #         .perform()
-    # except:
-    #     show_ans()
+    # # Open a new window
+    # driver.execute_script("window.open('');")
+    # # Switch to the new window and open URL B
+    # driver.switch_to.window(driver.window_handles[1])
+    # driver.get(ans_link)
+
+    driver.implicitly_wait(10)
+    try:
+        print("showanswer")
+        show = driver.find_element_by_id('showAnswer')
+
+        #show ans in new tab
+        webdriver.ActionChains(driver) \
+            .key_down(Keys.CONTROL) \
+            .click(show) \
+            .key_up(Keys.CONTROL) \
+            .perform()
+    except SeleniumExceptions.NoSuchElementException:
+        show_ans()
 
 
 def sunmit():
@@ -92,13 +98,14 @@ def sunmit():
     driver.find_element_by_id('continue').click()
 
 
-
 def do_assignment():
     pass
+
 
 def assignment_type():
     return assignment_type
     pass
+
 
 def correct_chk():
     pass
